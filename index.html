@@ -7,72 +7,44 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>Pokemon Team Builder</h1>
-    <p class="muted">Enter a Pokémon <b>name</b> (pikachu) or <b>ID</b> (1–151).</p>
-  </header>
 
   <main>
     <section class="card">
+      <label class="label-top" for="pokeInput">Name or ID</label>
+
       <div class="row">
-        <label for="pokeInput"><b>Pokémon:</b></label>
-        <input id="pokeInput" type="text" placeholder="e.g., 25 or pikachu" autocomplete="off" />
-        <button id="searchBtn" type="button">Submit</button>
+        <input id="pokeInput" type="text" placeholder="" autocomplete="off" />
+        <button id="searchBtn" type="button">Find</button>
         <span id="status" class="muted small"></span>
       </div>
 
       <div id="error" class="error"></div>
 
-      <hr />
-
       <div id="result" class="grid hidden">
-        <div>
-          <img id="pokeImg" alt="Pokemon image" />
+        <img id="pokeImg" alt="Pokemon image" />
+
+        <audio id="pokeAudio" controls preload="none"></audio>
+        <span id="audioNote" class="muted small"></span>
+
+        <!-- 4 move dropdowns in a 2x2 grid -->
+        <div class="moves-grid">
+          <select id="move1"></select>
+          <select id="move2"></select>
+          <select id="move3"></select>
+          <select id="move4"></select>
         </div>
 
-        <div>
-          <h2 id="pokeName"></h2>
-
-          <div class="row">
-            <audio id="pokeAudio" controls preload="none"></audio>
-            <span id="audioNote" class="muted small"></span>
-          </div>
-
-          <div class="row two">
-            <div class="col">
-              <label for="move1"><b>Move 1</b></label>
-              <select id="move1"></select>
-            </div>
-            <div class="col">
-              <label for="move2"><b>Move 2</b></label>
-              <select id="move2"></select>
-            </div>
-          </div>
-
-          <div class="row two">
-            <div class="col">
-              <label for="move3"><b>Move 3</b></label>
-              <select id="move3"></select>
-            </div>
-            <div class="col">
-              <label for="move4"><b>Move 4</b></label>
-              <select id="move4"></select>
-            </div>
-          </div>
-
-          <div class="row">
-            <button id="addBtn" type="button" disabled>Add to Team</button>
-            <button id="clearTeamBtn" type="button">Clear Team</button>
-            <span class="muted small">Team max: 6</span>
-          </div>
+        <div class="actions">
+          <button id="addBtn" type="button" disabled>Add to Team</button>
+          <button id="clearTeamBtn" type="button">Clear Team</button>
         </div>
+
+        <!-- Team table like your screenshot -->
+        <section class="team-section">
+          <table class="team-table" id="teamTable" style="display:none;"></table>
+        </section>
+
       </div>
-    </section>
-
-    <section class="team-section">
-      <h2>Your Team</h2>
-      <p id="teamEmpty" class="muted">No Pokémon added yet.</p>
-      <div id="teamList" class="team"></div>
     </section>
   </main>
 
